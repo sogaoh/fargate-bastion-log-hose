@@ -1,5 +1,5 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
-COPY ./check_login.sh .
+COPY ./container/check_login.sh .
 RUN chmod 700 check_login.sh
 RUN dnf update -y && \
     dnf install -y procps && \
