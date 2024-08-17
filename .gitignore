@@ -1,5 +1,3 @@
-.idea
-.DS_Store
 **/terraform.d
 **/generated
 **/.envrc
@@ -8,3 +6,53 @@
 **/*.tfvars.*
 **/*.tfstate
 **/*.tfstate.*
+**/terraform.hcl
+
+# Terragrunt-generated files
+**/_provider.tf
+**/_variables.tf
+**/terragrunt.hcl
+!terragrunt/terragrunt.hcl
+
+# Terraform files
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Ignore override files as they are usually used to override resources locally and so
+# are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore .terraform.lock.hcl files
+.terraform.lock.hcl
+
+# Ignore any local .env files
+*.env
+
+# Ignore any logs
+*.log
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore Terragrunt cache directories
+**/.terragrunt-cache/*
