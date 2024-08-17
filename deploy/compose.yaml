@@ -9,3 +9,5 @@ services:
     tty: true
     environment:
       - TZ=Asia/Tokyo
+      #- SLEEP_SECONDS=30
+    restart: "no"

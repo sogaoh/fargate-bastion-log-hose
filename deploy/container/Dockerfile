@@ -6,4 +6,5 @@ RUN dnf update -y && \
     dnf -y localinstall --nogpgcheck https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm && \
     rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 && \
     dnf -y install --nogpgcheck mysql mysql-community-client
-ENTRYPOINT ["./check_login.sh"]
+ENV SLEEP_SECONDS=900
+ENTRYPOINT ["sh", "-c", "./check_login.sh $SLEEP_SECONDS"]
