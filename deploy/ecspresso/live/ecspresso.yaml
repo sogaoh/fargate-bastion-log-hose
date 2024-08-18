@@ -1,0 +1,17 @@
+region: ap-northeast-1
+cluster: bastion-staging
+service: bastion-client
+service_definition: ./ecs-service-def.jsonnet
+task_definition: ./ecs-task-def.jsonnet
+timeout: 5m0s
+plugins:
+  - name: tfstate
+    config:
+      path: ../../../terragrunt/live/resource/ecs-cluster/terraform.tfstate
+    func_prefix: ecs_
+  - name: tfstate
+    config:
+      path: ../../../terragrunt/live/manage/iam/role/task-exec/terraform.tfstate
+    func_prefix: taskRole_
+#filter_command: peco
+appspec: null
