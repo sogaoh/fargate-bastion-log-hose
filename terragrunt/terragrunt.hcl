@@ -64,12 +64,12 @@ data "aws_caller_identity" "current" {}
 EOF
 }
 
-include {
-  path = find_in_parent_folders()
-}
-locals {
-  account_id = get_aws_account_id()
-}
-inputs = {
-  account_id = local.account_id
-}
+# include {
+#   path = find_in_parent_folders()
+# }
+# locals {
+#   account_id = get_aws_account_id()
+# }
+# inputs = {
+#   account_id = local.account_id
+# }
