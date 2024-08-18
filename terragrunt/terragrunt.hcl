@@ -4,6 +4,12 @@ generate "terraform_version" {
   contents  = "1.9.4"
 }
 
+generate "terragrunt_version" {
+  path      = ".terragrunt-version"
+  if_exists = "overwrite_terragrunt"
+  contents  = "0.66.8"
+}
+
 generate "backend" {
   path      = "_backend.tf"
   if_exists = "skip"
@@ -49,16 +55,21 @@ variable "profile" {
 EOF
 }
 
+generate "current" {
+  path      = "_current.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<EOF
+data "aws_region" "current" {}
+data "aws_caller_identity" "current" {}
+EOF
+}
 
-# 子ディレクトリの terragrunt.hcl の設定を含める
 include {
   path = find_in_parent_folders()
 }
-
-# 共通の locals 設定
 locals {
+  account_id = get_aws_account_id()
 }
-
-# 共通の inputs
 inputs = {
+  account_id = local.account_id
 }

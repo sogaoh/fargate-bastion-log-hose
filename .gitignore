@@ -8,10 +8,10 @@
 **/*.tfstate.*
 **/terraform.hcl
 
-# Terragrunt-generated files
+# Terragrunt `overwrite_terragrunt` files
 **/_provider.tf
 **/_variables.tf
-**/terragrunt.hcl
+!**/terragrunt.hcl
 !terragrunt/terragrunt.hcl
 
 # Terraform files
