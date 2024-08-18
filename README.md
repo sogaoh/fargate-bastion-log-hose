@@ -229,3 +229,11 @@ make deploy
     - ecspresso でも「開通」できそう。 https://github.com/kayac/ecspresso?tab=readme-ov-file#port-forwarding 見た感じでは
 
 - [ ] [utern](https://github.com/knqyf263/utern) (Multi group and stream log tailing for AWS CloudWatch Logs) との合わせ技で tail しながらオペレーションできると良さそう
+
+- [ ] Terragrunt の CI
+
+
+## その他
+
+- live の下にもう１階層環境ごとのディレクトリを置くのが良いかも（階層調整は必要）
+- ライセンスとか置く？
