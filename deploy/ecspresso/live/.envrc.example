@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export ECS_CLUSTER_NAME="bastion-staging"
+export ECS_CLUSTER_NAME="bastion-production"
 export ECS_SERVICE_NAME="bastion-client"
 export ECR_REPOSITORY_URI="123456789012.dkr.ecr.ap-northeast-1.amazonaws.com/bastion:latest"
 export AWS_DEFAULT_REGION="ap-northeast-1"
