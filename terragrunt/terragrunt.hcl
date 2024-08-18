@@ -52,6 +52,11 @@ variable "profile" {
   type    = string
   default = ""
 }
+
+variable "env_identifier" {
+  type    = string
+  default = "local"
+}
 EOF
 }
 
@@ -64,12 +69,9 @@ data "aws_caller_identity" "current" {}
 EOF
 }
 
-# include {
-#   path = find_in_parent_folders()
-# }
-# locals {
-#   account_id = get_aws_account_id()
-# }
-# inputs = {
-#   account_id = local.account_id
-# }
+locals {
+  account_id = get_aws_account_id()
+}
+inputs = {
+  account_id = local.account_id
+}

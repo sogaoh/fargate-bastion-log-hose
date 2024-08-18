@@ -16,7 +16,7 @@ resource "aws_iam_role" "ecs_task_exec_role" {
 }
 
 resource "aws_iam_role_policy" "bastion_policy" {
-  name = "bastion-policy"
+  name = "${var.env_identifier}-bastionPolicy"
   role = aws_iam_role.ecs_task_exec_role.id
 
   policy = jsonencode({
