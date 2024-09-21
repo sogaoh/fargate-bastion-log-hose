@@ -1,0 +1,7 @@
+---
+exclude:
+  - aws-rds-enable-performance-insights
+  # builtin.aws.rds.aws0176
+  - aws-rds-enable-iam-auth
+  # builtin.aws.rds.aws0177
+  - aws-rds-enable-deletion-protection
