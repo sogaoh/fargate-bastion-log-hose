@@ -1,0 +1,4 @@
+---
+exclude:
+  # 実践用なので Container Insights を有効化しない
+  - aws-ecs-enable-container-insight

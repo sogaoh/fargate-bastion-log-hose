@@ -1,0 +1,6 @@
+---
+exclude:
+  # デプロイ利便性の理由で ECR Image tag の上書きがあり得るため ignore する
+  - aws-ecr-enforce-immutable-repository
+  # ECR の暗号化タイプは AES256 とするため ignore する
+  - aws-ecr-repository-customer-key
