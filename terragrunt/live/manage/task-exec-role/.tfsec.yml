@@ -1,0 +1,4 @@
+---
+exclude:
+  # bastion_policy で '*' resource への Action を許容している
+  - aws-iam-no-policy-wildcards

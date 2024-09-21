@@ -37,5 +37,5 @@ module "ecs_exec_log_group" {
   #version = "~> 5.5"
 
   name              = local.ecs_exec_logs_name
-  retention_in_days = 3   # 2
+  retention_in_days = 3 # 2
 }
