@@ -79,5 +79,5 @@ module "db" {
 resource "random_password" "password" {
   length           = 40
   special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
+  override_special = "!#$%*()-_=+[]{}<>:?"
 }
