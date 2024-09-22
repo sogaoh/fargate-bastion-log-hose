@@ -9,7 +9,7 @@ local containerDefinitions = import 'libsonnet/taskdef/containerDefinitions.libs
   requiresCompatibilities: ['FARGATE'],
   runtimePlatform: {
     operatingSystemFamily: 'LINUX',
-    cpuArchitecture: 'X86_64',
+    cpuArchitecture: 'ARM64',
   },
   volumes: [],
   containerDefinitions: containerDefinitions,
