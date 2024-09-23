@@ -144,7 +144,7 @@ aws sts get-caller-identity
 ### Terragrunt でリソースを構築
 
 ```bash
-cd /path/to/terragrunt
+cd /path/to/terragrunt/live/resource/ecs-cluster
 ```
 
 ```bash
