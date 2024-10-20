@@ -3,7 +3,7 @@ dependency "ecr" {
 }
 
 dependency "ecs_task_exec_role" {
-config_path = "../../manage/task-exec-role"
+  config_path = "../../manage/task-exec-role"
 }
 
 inputs = {
