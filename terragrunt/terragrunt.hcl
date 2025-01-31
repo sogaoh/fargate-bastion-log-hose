@@ -1,13 +1,13 @@
 generate "terraform_version" {
   path      = ".terraform-version"
   if_exists = "overwrite_terragrunt"
-  contents  = "1.9.8"
+  contents  = "1.10.5"
 }
 
 generate "terragrunt_version" {
   path      = ".terragrunt-version"
   if_exists = "overwrite_terragrunt"
-  contents  = "0.68.4"
+  contents  = "0.72.5"
 }
 
 generate "backend" {
