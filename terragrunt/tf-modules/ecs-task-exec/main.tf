@@ -30,6 +30,7 @@ resource "aws_iam_role_policy" "bastion_policy" {
           "ssmmessages:OpenControlChannel",
           "ssmmessages:OpenDataChannel",
           "logs:DescribeLogGroups",
+          "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:DescribeLogStreams",
           "logs:PutLogEvents",

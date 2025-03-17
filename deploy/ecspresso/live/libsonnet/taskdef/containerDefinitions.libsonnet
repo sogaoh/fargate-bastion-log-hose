@@ -11,6 +11,7 @@ local secrets = import './variables/secrets.libsonnet';
     logConfiguration: {
       logDriver: 'awslogs',
       options: {
+        'awslogs-create-group': 'true',
         'awslogs-group': '{{ ecs_tfstate `module.ecs_exec_log_group.aws_cloudwatch_log_group.this[0].name` }}',
         'awslogs-region': '{{ must_env `AWS_DEFAULT_REGION` }}',
         'awslogs-stream-prefix': '{{ must_env `ECS_SERVICE_NAME` }}',
