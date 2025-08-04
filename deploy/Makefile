@@ -19,7 +19,7 @@ ARCH := --platform linux/arm64
 APPLICATION := bastion
 NOW := $(shell date "+%Y%m%d-%H%M")
 BLDARG_TZ := --build-arg=TZ=Asia/Tokyo
-BLDARG_SLEEP_SECONDS := --build-arg=SLEEP_SECONDS=300
+BLDARG_SLEEP_SECONDS := --build-arg=SLEEP_SECONDS=900
 AWS_ACCOUNT_ID ?= $(shell echo $$AWS_ACCOUNT_ID)
 AWS_REGION := ap-northeast-1
 TAG := latest

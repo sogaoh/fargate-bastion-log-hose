@@ -31,5 +31,5 @@ RUN dnf update -y && \
     dnf -y install --nogpgcheck mysql mysql-community-client && \
     dnf clean all
 
-ENV SLEEP_SECONDS=300
+ENV SLEEP_SECONDS=900
 ENTRYPOINT ["sh", "-c", "./check_login.sh $SLEEP_SECONDS"]

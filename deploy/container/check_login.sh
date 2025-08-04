@@ -2,7 +2,6 @@
 
 # コマンド実行履歴を保存する
 function log_history {
-    #logger -p /dev/pts/1 -t history -i "$$, $USER, $PWD, $BASH_COMMAND"
     logger -p user.info -t history -i "$$, $USER, $PWD, $BASH_COMMAND"
 }
 readonly -f log_history
