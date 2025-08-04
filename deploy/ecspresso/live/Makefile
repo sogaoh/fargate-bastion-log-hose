@@ -5,6 +5,7 @@ help:
 
 CONF_OPT := --config ecspresso.yaml
 DEPLOY_OPT :=
+RUN_OPT := --latest-task-definition
 #NO_WAIT_OPT := --no-wait
 WAIT_OPT :=
 APPSPEC_OPT := current
@@ -34,7 +35,7 @@ exec:
 	ecspresso $(CONF_OPT) exec --command bash
 
 run:
-	ecspresso $(CONF_OPT) run
+	ecspresso $(CONF_OPT) run $(RUN_OPT)
 
 dry-deploy:
 	ecspresso $(CONF_OPT) deploy --dry-run $(DEPLOY_OPT)
