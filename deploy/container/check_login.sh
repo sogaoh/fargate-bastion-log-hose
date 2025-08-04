@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# コマンド実行履歴を保存する
+function log_history {
+    #logger -p /dev/pts/1 -t history -i "$$, $USER, $PWD, $BASH_COMMAND"
+    logger -p user.info -t history -i "$$, $USER, $PWD, $BASH_COMMAND"
+}
+readonly -f log_history
+trap log_history DEBUG EXIT
+
 SLEEP_SECONDS="${1:-900}"  # 第1引数が指定されていない場合は900秒（15分）をデフォルト値とする
 LOGIN_USER="exist"
 
