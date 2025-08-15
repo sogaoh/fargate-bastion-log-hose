@@ -51,8 +51,7 @@ resource "aws_cloudwatch_log_subscription_filter" "cwl_to_firehose" {
   name            = "cwl-to-firehose"
   log_group_name  = local.source_log_group_name
   filter_pattern  = local.subscription_filter_pattern
-  destination_arn = aws_kinesis_firehose_delivery_stream.cwl_to_s3.arn
-  role_arn        = module.cwl_to_firehose_role.generic_role.arn
+  destination_arn = data.aws_lambda_function.cwl_processor.arn
 }
 
 data "aws_lambda_function" "cwl_processor" {
