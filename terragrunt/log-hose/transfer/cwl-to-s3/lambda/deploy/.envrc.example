@@ -1,0 +1,2 @@
+# Lambda deployment with lambroll
+export LAMBDA_EXECUTION_ROLE=arn:aws:iam::123456789012:role/CwlToS3Role

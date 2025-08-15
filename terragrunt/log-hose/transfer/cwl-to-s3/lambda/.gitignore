@@ -1,0 +1,6 @@
+# Ignore Python virtual environments
+venv
+
+dist
+function.zip
+.envrc
