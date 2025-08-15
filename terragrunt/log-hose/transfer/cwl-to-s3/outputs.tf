@@ -18,3 +18,8 @@ output "firehose_delivery_role" {
   description = "The IAM role used by the Firehose delivery stream"
   value       = module.firehose_delivery_role.generic_role
 }
+
+output "subscription_filter_role" {
+  description = "The IAM role for CloudWatch Logs subscription filter"
+  value       = module.subscription_filter_role.generic_role
+}

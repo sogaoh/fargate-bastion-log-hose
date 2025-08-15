@@ -1,5 +1,8 @@
 # refs: https://n-s.tokyo/2025/03/20250301/
 
+data "aws_region" "current" {}
+data "aws_caller_identity" "current" {}
+
 resource "aws_kinesis_firehose_delivery_stream" "cwl_to_s3" {
   destination = "extended_s3"
   name        = local.firehose_stream_name
@@ -77,6 +80,62 @@ data "aws_iam_policy_document" "s3_rw" {
     resources = [
       data.terraform_remote_state.storage_s3terminal.outputs.s3_log_terminal_bucket.arn,
       "${data.terraform_remote_state.storage_s3terminal.outputs.s3_log_terminal_bucket.arn}/*",
+    ]
+  }
+}
+
+# Lambda function execution role for CloudWatch Logs subscription filter
+module "subscription_filter_role" {
+  source = "../../../tf-modules/generic-role"
+
+  service           = "lambda.amazonaws.com"
+  generic_role_name = "CwlToS3SubscriptionFilterRole"
+  generic_policy_arns = [
+    aws_iam_policy.subscription_filter_policy.arn,
+  ]
+}
+
+# Policy for the subscription filter role
+resource "aws_iam_policy" "subscription_filter_policy" {
+  name        = "CwlToS3SubscriptionFilterPolicy"
+  description = "Policy for CloudWatch Logs subscription filter to Firehose"
+  policy      = data.aws_iam_policy_document.subscription_filter_policy.json
+}
+
+# Policy document for the subscription filter role
+data "aws_iam_policy_document" "subscription_filter_policy" {
+  version = "2012-10-17"
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "logs:PutSubscriptionFilter",
+      "logs:DescribeSubscriptionFilters",
+      "logs:DeleteSubscriptionFilter",
+    ]
+    resources = [
+      "arn:aws:logs:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:log-group:*",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "firehose:PutRecord",
+      "firehose:PutRecordBatch",
+    ]
+    resources = [
+      "arn:aws:firehose:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:deliverystream/${local.firehose_stream_name}",
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "iam:PassRole",
+    ]
+    resources = [
+      module.firehose_delivery_role.generic_role.arn,
     ]
   }
 }
