@@ -114,6 +114,7 @@ module "subscription_filter_role" {
   generic_role_name = "CwlToS3SubscriptionFilterRole"
   generic_policy_arns = [
     aws_iam_policy.subscription_filter.arn,
+    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
   ]
 }
 
