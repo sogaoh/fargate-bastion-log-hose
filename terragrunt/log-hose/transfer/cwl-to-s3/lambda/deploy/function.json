@@ -1,0 +1,13 @@
+{
+  "FunctionName": "cwl-to-s3-processor",
+  "Description": "CloudWatch Logs to S3 Lambda processor",
+  "Handler": "lambda_function.handler",
+  "Role": "{{ env `LAMBDA_EXECUTION_ROLE` }}",
+  "Runtime": "python3.12",
+  "MemorySize": 256,
+  "Timeout": 60,
+  "Architectures": ["arm64"],
+  "Tags": {
+    "Proj": "fargate-bastion-log-hose"
+  }
+}
