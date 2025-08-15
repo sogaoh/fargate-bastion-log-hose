@@ -56,7 +56,13 @@ resource "aws_cloudwatch_log_subscription_filter" "cwl_to_firehose" {
 }
 
 data "aws_lambda_function" "cwl_processor" {
-  function_name = "cwl-to-s3-processor"
+  function_name = local.lambda_function_name
+}
+module "lambda_log_group" {
+  source = "terraform-aws-modules/cloudwatch/aws//modules/log-group"
+
+  name              = "/aws/lambda/${local.lambda_function_name}"
+  retention_in_days = local.lambda_log_retention_days
 }
 
 
