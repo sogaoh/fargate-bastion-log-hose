@@ -19,6 +19,9 @@ resource "aws_kinesis_firehose_delivery_stream" "cwl_to_s3" {
       log_group_name  = "/aws/kinesisfirehose/${local.firehose_stream_name}"
       log_stream_name = "DestinationDelivery"
     }
+    // aws logs create-log-stream \
+    //   --log-group-name "/aws/kinesisfirehose/${local.firehose_stream_name}" \
+    //   --log-stream-name "DestinationDelivery"
 
     processing_configuration {
       enabled = true
