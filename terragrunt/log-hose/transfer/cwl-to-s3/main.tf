@@ -30,18 +30,6 @@ resource "aws_kinesis_firehose_delivery_stream" "cwl_to_s3" {
           parameter_value = data.aws_lambda_function.cwl_processor.arn
         }
       }
-
-      processors {
-        type = "Decompression"
-        parameters {
-          parameter_name  = "CompressionFormat"
-          parameter_value = "GZIP"
-        }
-      }
-
-      processors {
-        type = "AppendDelimiterToRecord"
-      }
     }
   }
 }
@@ -86,6 +74,7 @@ module "firehose_delivery_role" {
     "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess",
     "arn:aws:iam::aws:policy/AmazonKinesisFirehoseFullAccess",
     aws_iam_policy.s3_rw.arn,
+    aws_iam_policy.lambda_invoke.arn,
   ]
 }
 
@@ -108,6 +97,25 @@ data "aws_iam_policy_document" "s3_rw" {
     resources = [
       data.terraform_remote_state.storage_s3terminal.outputs.s3_log_terminal_bucket.arn,
       "${data.terraform_remote_state.storage_s3terminal.outputs.s3_log_terminal_bucket.arn}/*",
+    ]
+  }
+}
+
+resource "aws_iam_policy" "lambda_invoke" {
+  name   = "CwlToS3_LambdaInvoke"
+  policy = data.aws_iam_policy_document.lambda_invoke.json
+}
+data "aws_iam_policy_document" "lambda_invoke" {
+  version = "2012-10-17"
+  statement {
+    effect = "Allow"
+    actions = [
+      "lambda:InvokeFunction",
+      "lambda:GetFunctionConfiguration",
+    ]
+    resources = [
+      data.aws_lambda_function.cwl_processor.arn,
+      "${data.aws_lambda_function.cwl_processor.arn}:*",
     ]
   }
 }
