@@ -177,6 +177,7 @@ module "cwl_to_firehose_role" {
   generic_role_name = "CwlToFirehoseRole"
   generic_policy_arns = [
     aws_iam_policy.cwl_to_firehose.arn,
+    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
   ]
 }
 # IAM policy for CloudWatch Logs to write to Firehose
