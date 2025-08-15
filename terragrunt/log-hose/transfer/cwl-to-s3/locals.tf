@@ -1,5 +1,5 @@
 locals {
-  firehose_stream_name = "bastion-log-to-s3"
+  firehose_stream_name = var.firehose_stream_name
 
   firehose_delivery_log_retention_days = 3
 

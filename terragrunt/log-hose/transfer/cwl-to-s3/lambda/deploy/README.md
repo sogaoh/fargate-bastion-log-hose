@@ -19,10 +19,7 @@ cp .envrc.example .envrc
 2. Edit the `.envrc` file to set the appropriate values for your environment:
 
 ```bash
-export AWS_ACCOUNT_ID=your-account-id
 export LAMBDA_EXECUTION_ROLE=arn:aws:iam::${AWS_ACCOUNT_ID}:role/your-lambda-role
-export LOG_LEVEL=INFO
-export TAG_ENV=dev
 ```
 
 3. Load the environment variables:

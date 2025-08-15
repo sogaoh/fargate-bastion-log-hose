@@ -4,6 +4,11 @@
 # }
 
 # variable "source_log_group_name" {
-#   type = string
+#   type    = string
+#   default = ""
+# }
+
+# variable "firehose_stream_name" {
+#   type    = string
 #   default = ""
 # }
